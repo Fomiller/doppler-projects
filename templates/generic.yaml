@@ -1,0 +1,32 @@
+projects:
+  - name: generic # Name may contain lowercase letters, spaces, numbers, hyphens, and underscores
+    description: A test template project
+
+    # List of totally customizable environments, e.g Test, Stage, QA, CI-CD
+    environments:
+      - name: Development # Name may contain letters, spaces, numbers, hyphens, and underscores
+        slug: dev # Slug may contain letters, numbers, hyphens, and underscores
+        configs:
+          - slug: dev # First slug *must* match environment slug name
+
+      - name: Test
+        slug: test
+        configs:
+          - slug: test
+
+      - name: Production
+        slug: prod
+        configs:
+          - slug: prod
+
+    # Define secrets for each environment
+    secrets:
+      dev:
+        ACCOUNT_ID: ${aws.dev.AWS_ACCOUNT_ID}
+
+      test:
+        ACCOUNT_ID: ${aws.dev.AWS_ACCOUNT_ID}
+
+      prod:
+        ACCOUNT_ID: prod_account
+
